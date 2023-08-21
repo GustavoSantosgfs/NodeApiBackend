@@ -39,11 +39,11 @@ const getPerson = (req, res) => {
 const createPerson = (req, res) => {
     const schema = Joi.object({
         name: Joi.string().required(),
-        email: Joi.string().email(),
-        phone: Joi.string(),
-        address: Joi.string(),
-        birth_date: Joi.string(),
-        gender: Joi.string(),
+        email: Joi.string().email().required(),
+        phone: Joi.string().required(),
+        address: Joi.string().required(),
+        birth_date: Joi.string().required(),
+        gender: Joi.string().required(),
         cpf: Joi.string().required()
     })
 
@@ -68,16 +68,16 @@ const createPerson = (req, res) => {
 }
 
 const updatePerson = (req, res) => {
-    const personId = req.params.personId
+    const personId = req.params.id
 
     const schema = Joi.object({
-        name: Joi.string(),
-        email: Joi.string().email(),
-        phone: Joi.string(),
-        address: Joi.string(),
-        birth_date: Joi.string(),
-        gender: Joi.string(),
-        cpf: Joi.string()
+        name: Joi.string().required(),
+        email: Joi.string().email().required(),
+        phone: Joi.string().required(),
+        address: Joi.string().required(),
+        birth_date: Joi.string().required(),
+        gender: Joi.string().required(),
+        cpf: Joi.string().required()
     })
 
     const validationResult = schema.validate(req.body)
