@@ -109,8 +109,14 @@ const updatePerson = (req, res) => {
 
 const deletePerson = (req, res) => {
     const personId = req.params.id
-
-    
+    const deleteQuery = 'DELETE FROM people WHERE id = ?'
+    db.run(deleteQuery, [personId], (err) => {
+        if (err) {
+            return res.status(500).json({ error: 'Error deleting data from the database' });
+        }
+        
+        return res.status(200).json({ message: 'Person deleted successfully' })
+    })
 }
 
 module.exports = {

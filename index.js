@@ -11,8 +11,10 @@ app.get('/', (req, res) => {
     res.sendFile(documentationPath)
 })
 
+app.use(express.json())
 app.use('/people', peopleRoutes)
-// app.use('/api/people', peopleRoutes)
+// app.use('/api/people', peopleRoutes) 
+//esse comentário vai sair daqui kkkkkkk (anotei só pra eu lembrar de fazer um esquema aqui)
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
